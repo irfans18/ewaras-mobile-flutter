@@ -1,0 +1,203 @@
+import 'package:ewarasm/app/data/models/heart_rate_min_model.dart';
+import 'package:ewarasm/app/data/models/oxygen_saturation_model.dart';
+import 'package:ewarasm/app/data/models/vital_sensor_model.dart';
+import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+import '../../../theme/style.dart';
+import '../controllers/vital_sign_controller.dart';
+
+class VitalSignView extends GetView<VitalSignController> {
+  _getData() {
+    return TextButton(
+        onPressed: () => controller.create(), child: Text('Test'));
+  }
+
+  _oxyChart(height) {
+    return Container(
+      height: height * 0.3,
+      child: SfCartesianChart(
+        title: ChartTitle(text: 'Oxygen Saturation / Minute'),
+        primaryXAxis: DateTimeAxis(),
+        tooltipBehavior: TooltipBehavior(),
+        zoomPanBehavior: ZoomPanBehavior(
+          enablePinching: true,
+          enableDoubleTapZooming: true,
+          enablePanning: true,
+          enableSelectionZooming: true,
+          enableMouseWheelZooming: true,
+        ),
+        series: <SplineAreaSeries<VitalSensor, DateTime>>[
+          SplineAreaSeries<VitalSensor, DateTime>(
+            dataSource: controller.vitalSensorData!,
+            xValueMapper: (VitalSensor hrData, _) => hrData.dateTime,
+            yValueMapper: (VitalSensor hrData, _) => hrData.oxygenSaturation,
+            name: 'Heart Rate',
+            color: Color.fromARGB(90, 33, 149, 243),
+            markerSettings: MarkerSettings(
+                color: const Color.fromARGB(106, 33, 149, 243),
+                width: 3,
+                height: 3,
+                isVisible: true),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _bpmChart(height) {
+    return Container(
+      height: height * 0.3,
+      child: SfCartesianChart(
+        title: ChartTitle(text: 'Heart Rate / Minute'),
+
+        primaryXAxis: DateTimeAxis(),
+        tooltipBehavior: TooltipBehavior(),
+        zoomPanBehavior: ZoomPanBehavior(
+          enablePinching: true,
+          enableDoubleTapZooming: true,
+          enablePanning: true,
+          enableSelectionZooming: true,
+          enableMouseWheelZooming: true,
+        ),
+        series: <SplineAreaSeries<VitalSensor, DateTime>>[
+          SplineAreaSeries<VitalSensor, DateTime>(
+            dataSource: controller.vitalSensorData!,
+            xValueMapper: (VitalSensor hrData, _) => hrData.dateTime,
+            yValueMapper: (VitalSensor hrData, _) => hrData.heartRate,
+            name: 'Heart Rate',
+            color: Color.fromARGB(90, 33, 149, 243),
+            markerSettings: MarkerSettings(
+                color: const Color.fromARGB(106, 33, 149, 243),
+                width: 3,
+                height: 3,
+                isVisible: true),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        // title: Text(controller.heartRateData![0].value!.bpm.toString()),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body:
+          // SfSparkLineChart.custom(
+          //   dataCount: controller.heartRateData!.length,
+          //   xValueMapper: (index) => index,
+          //   yValueMapper: (index) =>
+          //       controller.heartRateData![index].value!.bpm!,
+          //   marker: SparkChartMarker(
+          //     displayMode: SparkChartMarkerDisplayMode.all,
+          //   ),
+          //   axisLineColor: Colors.transparent,
+          //   axisLineWidth: 0,
+          //   color: Colors.blue,
+          //   trackball: SparkChartTrackball(
+          //       activationMode: SparkChartActivationMode.tap),
+          // )
+
+          // SfCartesianChart(
+          //   primaryXAxis: DateTimeAxis(),
+          //   series: <LineSeries<HeartRateMin, DateTime>>[
+          //     LineSeries<HeartRateMin, DateTime>(
+          //       dataSource: controller.heartRateData!,
+          //       xValueMapper: (HeartRateMin hrData, _) => hrData.dateTime,
+          //       yValueMapper: (HeartRateMin hrData, _) => hrData.value!.bpm,
+          //       name: 'Heart Rate',
+          //     ),
+          //   ],
+          // ),
+
+          Container(
+        color: backgroundColor,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Hi Patient!", style: titleTextStyle),
+                Icon(Icons.person)
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            _bpmChart(height),
+            const SizedBox(
+              height: 16,
+            ),
+            _oxyChart(height),
+            const SizedBox(
+              height: 16,
+            ),
+            //       _getData()
+
+            // Center(child: Text("Hypoxia Detected", style: titleTextStyle)),
+            // const SizedBox(
+            //   height: 16,
+            // ),
+            // Container(
+            //     padding: const EdgeInsets.all(defaultMargin),
+            //     decoration: BoxDecoration(
+            //         color: whiteColor,
+            //         border: Border.all(
+            //           color: secondaryColor,
+            //         ),
+            //         borderRadius: const BorderRadius.all(Radius.circular(20))),
+            //     child: Text(
+            //       diagnose,
+            //       style: primaryTextStyle,
+            //     )),
+            // const SizedBox(
+            //   height: 24,
+            // ),
+            // TextButton(
+            //   child: Text('Test Again', style: buttonTextStyle),
+            //   style: TextButton.styleFrom(
+            //     padding: EdgeInsets.symmetric(vertical: 16),
+            //     // foregroundColor: buttonTextColor,
+            //     backgroundColor: buttonColor,
+            //     shape: const RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.all(Radius.circular(25))),
+            //   ),
+            //   onPressed: () {
+            //     // print('Pressed');
+            //   },
+            // ),
+            // const SizedBox(
+            //   height: 16,
+            // ),
+            // TextButton(
+            //   child: Text('Seek Help', style: warningTextStyle),
+            //   style: TextButton.styleFrom(
+            //     padding: EdgeInsets.symmetric(vertical: 16),
+            //     // foregroundColor: buttonTextColor,
+            //     backgroundColor: warningColor,
+            //     shape: const RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.all(Radius.circular(25))),
+            //   ),
+            //   onPressed: () {
+            //     // print('Pressed');
+            //   },
+            // ),
+            // Align(alignment: Alignment.bottomLeft, child: inputIdea()),
+          ],
+        ),
+      ),
+    );
+  }
+}

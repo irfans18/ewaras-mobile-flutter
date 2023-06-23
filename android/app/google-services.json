@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "88473170532",
+    "project_id": "ewaras-53ba3",
+    "storage_bucket": "ewaras-53ba3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88473170532:android:75cb89ed34aec2f751a571",
+        "android_client_info": {
+          "package_name": "com.example.ewarasm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88473170532-i6q41eg4mur8do645vp4kj5dqk0jtej8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9etYj7wH39Y8og47e8D1GTVB-WUKXTiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88473170532-i6q41eg4mur8do645vp4kj5dqk0jtej8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

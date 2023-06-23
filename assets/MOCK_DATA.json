@@ -1,0 +1,102 @@
+[
+	{
+		"dateTime": "2023-06-22 12:14:30",
+		"heart_rate": 73,
+		"blood_pressure": {
+			"systolic": 158,
+			"diastolic": 81
+		},
+		"respiratory_rate": 21,
+		"oxygen_saturation": 98
+	},
+	{
+		"dateTime": "2023-06-22 12:14:40",
+		"heart_rate": 76,
+		"blood_pressure": {
+			"systolic": 126,
+			"diastolic": 87
+		},
+		"respiratory_rate": 20,
+		"oxygen_saturation": 96
+	},
+	{
+		"dateTime": "2023-06-22 12:14:50",
+		"heart_rate": 92,
+		"blood_pressure": {
+			"systolic": 139,
+			"diastolic": 86
+		},
+		"respiratory_rate": 15,
+		"oxygen_saturation": 99
+	},
+	{
+		"dateTime": "2023-06-22 12:15:00",
+		"heart_rate": 67,
+		"blood_pressure": {
+			"systolic": 154,
+			"diastolic": 90
+		},
+		"respiratory_rate": 19,
+		"oxygen_saturation": 100
+	},
+	{
+		"dateTime": "2023-06-22 12:15:10",
+		"heart_rate": 77,
+		"blood_pressure": {
+			"systolic": 170,
+			"diastolic": 85
+		},
+		"respiratory_rate": 24,
+		"oxygen_saturation": 98
+	},
+	{
+		"dateTime": "2023-06-22 12:15:20",
+		"heart_rate": 86,
+		"blood_pressure": {
+			"systolic": 138,
+			"diastolic": 92
+		},
+		"respiratory_rate": 14,
+		"oxygen_saturation": 98
+	},
+	{
+		"dateTime": "2023-06-22 12:15:30",
+		"heart_rate": 94,
+		"blood_pressure": {
+			"systolic": 172,
+			"diastolic": 85
+		},
+		"respiratory_rate": 24,
+		"oxygen_saturation": 98
+	},
+	{
+		"dateTime": "2023-06-22 12:15:40",
+		"heart_rate": 98,
+		"blood_pressure": {
+			"systolic": 176,
+			"diastolic": 71
+		},
+		"respiratory_rate": 15,
+		"oxygen_saturation": 98
+	},
+	{
+		"dateTime": "2023-06-22 12:15:50",
+		"heart_rate": 98,
+		"blood_pressure": {
+			"systolic": 162,
+			"diastolic": 97
+		},
+		"respiratory_rate": 20,
+		"oxygen_saturation": 99
+	},
+	{
+		"dateTime": "2023-06-22 12:16:00",
+		"heart_rate": 72,
+		"blood_pressure": {
+			"systolic": 176,
+			"diastolic": 110
+		},
+		"respiratory_rate": 24,
+		"oxygen_saturation": 97
+	}
+]
