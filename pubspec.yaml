@@ -12,6 +12,11 @@ dependencies:
   flutter: 
     sdk: flutter
   syncfusion_flutter_charts: ^21.2.10
+  google_sign_in: ^6.1.4
+  firebase_auth: ^4.6.3
+  cloud_firestore: ^4.8.1
+  firebase_core: ^2.14.0
+  firebase_database: ^10.2.3
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

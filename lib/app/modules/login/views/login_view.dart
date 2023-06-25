@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/auth_controller.dart';
 
-class LoginView extends GetView<LoginController> {
+class LoginView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class LoginView extends GetView<LoginController> {
           ),
           Placeholder(
             color: headerTextColor,
-            fallbackHeight: 400,
+            fallbackHeight: 350,
             // fallbackWidth: 10,
           ),
           SizedBox(
@@ -51,7 +51,7 @@ class LoginView extends GetView<LoginController> {
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15))),
             ),
-            onPressed: () => controller.redirectOffHome(),
+            onPressed: () => controller.handleSignIn(),
           ),
           const SizedBox(
             height: 16,

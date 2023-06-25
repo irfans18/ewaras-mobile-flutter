@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../data/models/vital_sensor_model.dart';
 import '../../../utils/style.dart';
+import '../../login/controllers/auth_controller.dart';
 import '../controllers/vital_sign_controller.dart';
 
 class VitalSignView extends GetView<VitalSignController> {
@@ -306,35 +308,43 @@ class VitalSignView extends GetView<VitalSignController> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Obx(() => (controller.isLoading.value == true) ? Center(child: CircularProgressIndicator(),) : Container(
-            color: backgroundColor,
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Hi Patient!", style: titleTextStyle),
-                    Icon(Icons.person)
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                _bpmChart(height),
-                const SizedBox(
-                  height: 16,
-                ),
-                _oxyChart(height),
-                const SizedBox(
-                  height: 16,
-                ),
-                _iconShortcut(),
-              ],
-            ),
-          )),
+      body: Obx(() => (controller.isLoading.value == true)
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              color: backgroundColor,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: ListView(
+                padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Hi Patient!", style: titleTextStyle),
+                      (controller.user != null)
+                          ? CircleAvatar(
+                              backgroundImage: NetworkImage(controller.user!.photoURL!), // Provide the image URL
+                            )
+                          : Icon(Icons.person)
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  _bpmChart(height),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  _oxyChart(height),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  _iconShortcut(),
+                ],
+              ),
+            )),
     );
   }
 }
